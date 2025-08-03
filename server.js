@@ -21,6 +21,9 @@ app.post('/create-payment-intent', async (req, res) => {
       amount: parseInt(totalAmount),
       currency: 'hkd',
       automatic_payment_methods: { enabled: true },
+      metadata: {
+        visaID: 'VN-123456'
+      }
     })
 
     res.json({
