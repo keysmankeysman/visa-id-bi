@@ -4,7 +4,7 @@ const cors = require('cors')
 const dotenv = require('dotenv')
 dotenv.config()
 
-app.use('/static', express.static('libraries'))
+app.use('/libraries', express.static('public'))
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 
