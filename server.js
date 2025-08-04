@@ -19,14 +19,12 @@ app.post('/create-payment-intent', async (req, res) => {
       return res.status(400).json({ error: 'Invalid total amount' })
     }
 
-    console.log('visaID', visaID)
-
     const paymentIntent = await stripe.paymentIntents.create({
       amount: parseInt(totalAmount),
       currency: 'hkd',
       automatic_payment_methods: { enabled: true },
       metadata: {
-        visaID: 'VN-123456'
+        visaID: visaID
       }
     })
 
