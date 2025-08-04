@@ -13,11 +13,13 @@ app.use(express.json())
 
 app.post('/create-payment-intent', async (req, res) => {
   try {
-    const { totalAmount } = req.body
+    const { visaID, totalAmount } = req.body
 
     if (!totalAmount || isNaN(totalAmount) || totalAmount <= 0) {
       return res.status(400).json({ error: 'Invalid total amount' })
     }
+
+    console.log('visaID', visaID)
 
     const paymentIntent = await stripe.paymentIntents.create({
       amount: parseInt(totalAmount),
